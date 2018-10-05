@@ -726,11 +726,12 @@ module BTagging BTagging {
   # PDG code = the highest PDG code of a quark or gluon inside DeltaR cone around jet axis
   # gluon's PDG code has the lowest priority
 
-  add EfficiencyFormula {0} { (pt >= 30.0 && pt < 170.0) * (9.59*10^-3 - 1.96*10^-5*pt + 4.53*10^-7*pt^2 - 1.08*10^-9*pt^3 + 7.62*10^-13*pt^4) +
-                              (pt >= 170.0) * (5.07*10^-3 + 6.02*10^-5*pt - 2.3*10^-8*pt^2) }
+  add EfficiencyFormula {0} { (pt >= 20.0 && pt < 50.0) * (0.194 + 0.0211*pt - 0.000348*pt^2 + 2.761*10^-6*pt^3 - 1.044*10^-8*pt^4 + 1.499*10^-11*pt^5) +
+                              (pt >= 50.0 && pt < 250.0) * (0.557 + 0.003417*pt - 3.26*10^-5*pt^2)  +
+																		(pt >= 250 && pt < 1000.0) * (0.768 - 0.00055*pt + 2.876*10^-7*pt^2)}
 
-  add EfficiencyFormula {4} { (pt >= 30.0 && pt <170.0) * (0.13 + 1.48*10^-3*pt - 1.00*10^-5*pt^2 + 2.65*10^-8*pt^3 - 2.36*10^-11*pt^4 ) +
-                              (pt >= 170.0) * (0.20)}
+  add EfficiencyFormula {4} { (pt >= 20.0 && pt < 200.0) * (0.136 - 0.000639*pt + 6.188*10^-6*pt^2 - 2.26*10^-8*pt^3 + 3.61*10^-11*pt^4 + 2.09*10^-14*pt^5) +
+                              (pt >= 200.0 && pt < 1000.0) * (0.103 + 0.00014*pt - 1.15*10^-7*pt^2)}
 
   add EfficiencyFormula {5} { (pt >= 30.0 && pt < 175.0) * (0.421 + 0.0107*pt - 1.314*10^-4*pt^2 + 7.268*10^-7*pt^3 - 1.513*10^-9*pt^4) +
                               (pt >= 175.0) * (0.79 - 3.17*10^-4*pt + 1.24*10^-7*pt^2) }
