@@ -52,6 +52,7 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   float b_Jet_pt[Jet_N], b_Jet_eta[Jet_N], b_Jet_phi[Jet_N], b_Jet_m[Jet_N];
   short b_Jet_flav[Jet_N];
   float b_Jet_bTag[Jet_N];
+  float b_Jet_cTag[Jet_N];
 
   const unsigned short GenParticle_N = 1000;
   unsigned short b_nGenParticle;
@@ -95,6 +96,7 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   tree->Branch("Jet_m", b_Jet_m, "Jet_m[nJet]/F");
   tree->Branch("Jet_flav", b_Jet_flav, "Jet_flav[nJet]/S");
   tree->Branch("Jet_bTag", b_Jet_bTag, "Jet_bTag[nJet]/F");
+  tree->Branch("Jet_cTag", b_Jet_cTag, "Jet_cTag[nJet]/F");
 
   tree->Branch("nGenParticle", &b_nGenParticle, "nGenParticle/s");
   tree->Branch("GenParticle_pt", b_GenParticle_pt, "GenParticle_pt[nGenParticle]/F");
@@ -314,7 +316,8 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
       b_Jet_phi[b_nJet] = jet->Phi;
       b_Jet_m[b_nJet] = jet->Mass;
       b_Jet_flav[b_nJet] = jet->Flavor;
-      b_Jet_bTag[b_nJet] = jet->BTag;
+      b_Jet_bTag[b_nJet] = ( jet->BTag & (1 << 0) );
+      b_Jet_cTag[b_nJet] = ( jet->BTag & (1 << 1) );
 
       // Keep the subjet particles
       TRefArray cons = jet->Constituents;
