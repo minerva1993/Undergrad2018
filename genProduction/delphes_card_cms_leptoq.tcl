@@ -749,21 +749,21 @@ module BTagging CTagging {
 
   add EfficiencyFormula {0} {
 
-  (pt <= 10.0)     * (0.00) +
-  (abs(eta) < 4.0) * (pt > 10.0) * (0.01) + \
-  (abs(eta) > 4.0) * (pt > 10.0) * (0.00)}
+  (pt <= 20.0)     * (0.00) +
+  (abs(eta) < 2.5) * (pt > 20.0) * (0.10) + 
+  (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
 
   add EfficiencyFormula {4} {
 
-  (pt <= 10.0)     * (0.00) +
-  (abs(eta) < 4.0) * (pt > 10.0) * (0.25) + \
-  (abs(eta) > 4.0) * (pt > 10.0) * (0.00)}
+  (pt <= 20.0)     * (0.00) +
+  (abs(eta) < 2.5) * (pt > 20.0) * (0.46) +
+  (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
 
   add EfficiencyFormula {5} {
 
-  (pt <= 10.0)     * (0.00) +
-  (abs(eta) < 4.0) * (pt > 10.0) * (0.03) + \
-  (abs(eta) > 4.0) * (pt > 10.0) * (0.00)}
+  (pt <= 20.0)     * (0.00) +
+  (abs(eta) < 2.5) * (pt > 20.0) * (0.10) + 
+  (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
 
 }
 
