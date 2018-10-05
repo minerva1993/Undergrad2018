@@ -57,7 +57,7 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   const unsigned short GenParticle_N = 1000;
   unsigned short b_nGenParticle;
   float b_GenParticle_pt[GenParticle_N], b_GenParticle_eta[GenParticle_N], b_GenParticle_phi[GenParticle_N], b_GenParticle_m[GenParticle_N];
- i short b_GenParticle_pdgId[GenParticle_N], b_GenParticle_q3[GenParticle_N];
+	short b_GenParticle_pdgId[GenParticle_N], b_GenParticle_q3[GenParticle_N];
   short b_GenParticle_mother[GenParticle_N], b_GenParticle_dau1[GenParticle_N], b_GenParticle_dau2[GenParticle_N];
 
   const unsigned short SubJet_N = 10000;
