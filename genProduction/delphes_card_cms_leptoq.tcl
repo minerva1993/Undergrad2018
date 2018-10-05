@@ -501,8 +501,7 @@ module Efficiency ElectronEfficiency {
 
   # efficiency formula for electrons
   set EfficiencyFormula {                                      (pt <= 10.0) * (0.00) +
-                                           (abs(eta) <= 1.5) * (pt > 10.0)  * (0.95) +
-                         (abs(eta) > 1.5 && abs(eta) <= 2.5) * (pt > 10.0)  * (0.85) +
+                                           (abs(eta) <= 2.5) * (pt > 20.0)  * (0.8) +
                          (abs(eta) > 2.5)                                   * (0.00)}
 }
 
@@ -534,9 +533,9 @@ module Efficiency MuonEfficiency {
   # set EfficiencyFormula {efficiency as a function of eta and pt}
 
   # efficiency formula for muons
-  set EfficiencyFormula {                                     (pt <= 10.0)                * (0.00) +
-                                           (abs(eta) <= 1.5) * (pt > 10.0)                * (0.95) +
-                         (abs(eta) > 1.5 && abs(eta) <= 2.4) * (pt > 10.0)                * (0.95) +
+  set EfficiencyFormula {                                     (pt <= 20.0)                * (0.00) +
+                                           (abs(eta) <= 1.5) * (pt > 20.0)                * (0.95) +
+                         (abs(eta) > 1.5 && abs(eta) <= 2.4) * (pt > 20.0)                * (0.95) +
                          (abs(eta) > 2.4)                                                 * (0.00)}
 }
 
@@ -550,7 +549,7 @@ module Isolation MuonIsolation {
 
   set OutputArray muons
 
-  set DeltaRMax 0.3
+  set DeltaRMax 0.4
 
   set PTMin 0.5
 
@@ -725,16 +724,20 @@ module BTagging BTagging {
   # add EfficiencyFormula {abs(PDG code)} {efficiency formula as a function of eta and pt}
   # PDG code = the highest PDG code of a quark or gluon inside DeltaR cone around jet axis
   # gluon's PDG code has the lowest priority
+  #1712.07158, deep csv M
 
-  add EfficiencyFormula {5} { (pt >= 20.0 && pt < 50.0) * (0.194 + 0.0211*pt - 0.000348*pt^2 + 2.761*10^-6*pt^3 - 1.044*10^-8*pt^4 + 1.499*10^-11*pt^5) +
-                              (pt >= 50.0 && pt < 250.0) * (0.557 + 0.003417*pt - 3.26*10^-5*pt^2)  +
-																		(pt >= 250 && pt < 1000.0) * (0.768 - 0.00055*pt + 2.876*10^-7*pt^2)}
+  add EfficiencyFormula {5} { 
+    (pt >= 20.0 && pt < 50.0) * (0.194 + 0.0211*pt - 0.000348*pt^2 + 2.761*10^-6*pt^3 - 1.044*10^-8*pt^4 + 1.499*10^-11*pt^5) +
+    (pt >= 50.0 && pt < 250.0) * (0.557 + 0.003417*pt - 3.26*10^-5*pt^2)  +
+		(pt >= 250 && pt < 1000.0) * (0.768 - 0.00055*pt + 2.876*10^-7*pt^2)}
 
-  add EfficiencyFormula {4} { (pt >= 20.0 && pt < 200.0) * (0.136 - 0.000639*pt + 6.188*10^-6*pt^2 - 2.26*10^-8*pt^3 + 3.61*10^-11*pt^4 + 2.09*10^-14*pt^5) +
-                              (pt >= 200.0 && pt < 1000.0) * (0.103 + 0.00014*pt - 1.15*10^-7*pt^2)}
+  add EfficiencyFormula {4} {
+    (pt >= 20.0 && pt < 200.0) * (0.136 - 0.000639*pt + 6.188*10^-6*pt^2 - 2.26*10^-8*pt^3 + 3.61*10^-11*pt^4 + 2.09*10^-14*pt^5) +
+    (pt >= 200.0 && pt < 1000.0) * (0.103 + 0.00014*pt - 1.15*10^-7*pt^2)}
 
-  add EfficiencyFormula {0} { (pt >= 20.0 && pt < 225.0) * (0.019 - 0.00031*pt + 3.39*10^-6*pt^2 - 1.47*10^-8*pt^3 + 2.92*10^-11*pt^4 - 2.12*10^-14*pt^5) +
-                              (pt >= 225.0 && pt < 1000.0) * (0.00328 + 5.7*10^-5*pt + 4.7*10^-9*pt^2) }
+  add EfficiencyFormula {0} {
+    (pt >= 20.0 && pt < 225.0) * (0.019 - 0.00031*pt + 3.39*10^-6*pt^2 - 1.47*10^-8*pt^3 + 2.92*10^-11*pt^4 - 2.12*10^-14*pt^5) +
+    (pt >= 225.0 && pt < 1000.0) * (0.00328 + 5.7*10^-5*pt + 4.7*10^-9*pt^2) }
 }
 
 
@@ -747,23 +750,21 @@ module BTagging CTagging {
 
   set BitNumber 1
 
+  #1712.07158, Loose
   add EfficiencyFormula {0} {
-
-  (pt <= 20.0)     * (0.00) +
-  (abs(eta) < 2.5) * (pt > 20.0) * (0.10) + 
-  (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
+    (pt <= 20.0)     * (0.00) +
+    (abs(eta) < 2.5) * (pt > 20.0) * (0.10) + 
+    (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
 
   add EfficiencyFormula {4} {
-
-  (pt <= 20.0)     * (0.00) +
-  (abs(eta) < 2.5) * (pt > 20.0) * (0.46) +
-  (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
+    (pt <= 20.0)     * (0.00) +
+    (abs(eta) < 2.5) * (pt > 20.0) * (0.46) +
+    (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
 
   add EfficiencyFormula {5} {
-
-  (pt <= 20.0)     * (0.00) +
-  (abs(eta) < 2.5) * (pt > 20.0) * (0.10) + 
-  (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
+    (pt <= 20.0)     * (0.00) +
+    (abs(eta) < 2.5) * (pt > 20.0) * (0.10) + 
+    (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
 
 }
 
@@ -782,12 +783,20 @@ module TauTagging TauTagging {
 
   set TauEtaMax 2.5
 
-  # add EfficiencyFormula {abs(PDG code)} {efficiency formula as a function of eta and pt}
+  # add EfficiencyFormula {abs(PDG code)} {efficiency formula as a function of eta and pt}: 1809.02861 Loose
 
   # default efficiency formula (misidentification rate)
-  add EfficiencyFormula {0} {0.01}
+  add EfficiencyFormula {0} {
+    (pt <= 20.0)     * (0.00) +
+    (abs(eta) < 2.5) * (pt > 20.0 && pt < 40) * (0.05) +
+    (abs(eta) < 2.5) * (pt > 40.0) * (0.01) +
+    (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
   # efficiency formula for tau-jets
-  add EfficiencyFormula {15} {0.6}
+  add EfficiencyFormula {15} {
+    (pt <= 20.0)     * (0.00) +
+    (abs(eta) < 2.5) * (pt > 20.0) * (0.60) +
+    (abs(eta) > 2.5) * (pt > 20.0) * (0.00)}
+
 }
 
 #####################################################
