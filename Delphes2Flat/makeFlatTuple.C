@@ -51,13 +51,13 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   unsigned short b_nJet;
   float b_Jet_pt[Jet_N], b_Jet_eta[Jet_N], b_Jet_phi[Jet_N], b_Jet_m[Jet_N];
   short b_Jet_flav[Jet_N];
-  float b_Jet_bTag[Jet_N];
-  float b_Jet_cTag[Jet_N];
+	int b_Jet_bTag[Jet_N];
+  int b_Jet_cTag[Jet_N];
 
   const unsigned short GenParticle_N = 1000;
   unsigned short b_nGenParticle;
   float b_GenParticle_pt[GenParticle_N], b_GenParticle_eta[GenParticle_N], b_GenParticle_phi[GenParticle_N], b_GenParticle_m[GenParticle_N];
-  short b_GenParticle_pdgId[GenParticle_N], b_GenParticle_q3[GenParticle_N];
+ i short b_GenParticle_pdgId[GenParticle_N], b_GenParticle_q3[GenParticle_N];
   short b_GenParticle_mother[GenParticle_N], b_GenParticle_dau1[GenParticle_N], b_GenParticle_dau2[GenParticle_N];
 
   const unsigned short SubJet_N = 10000;
@@ -95,8 +95,8 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   tree->Branch("Jet_phi", b_Jet_phi, "Jet_phi[nJet]/F");
   tree->Branch("Jet_m", b_Jet_m, "Jet_m[nJet]/F");
   tree->Branch("Jet_flav", b_Jet_flav, "Jet_flav[nJet]/S");
-  tree->Branch("Jet_bTag", b_Jet_bTag, "Jet_bTag[nJet]/F");
-  tree->Branch("Jet_cTag", b_Jet_cTag, "Jet_cTag[nJet]/F");
+  tree->Branch("Jet_bTag", b_Jet_bTag, "Jet_bTag[nJet]/I");
+  tree->Branch("Jet_cTag", b_Jet_cTag, "Jet_cTag[nJet]/I");
 
   tree->Branch("nGenParticle", &b_nGenParticle, "nGenParticle/s");
   tree->Branch("GenParticle_pt", b_GenParticle_pt, "GenParticle_pt[nGenParticle]/F");
