@@ -9,5 +9,4 @@ void run( const char* name )
    chain.Add(name);
    tauAnalyzer t(&chain);
    t.Loop();
-   gSystem->Exit(0);
 }

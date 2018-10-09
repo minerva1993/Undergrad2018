@@ -39,7 +39,7 @@ void tauAnalyzer::Loop()
   TTree* tree = new TTree("tree", "ntuple");
 
   tree->Branch("matched_tauTag", "std::vector<int>", &b_matched_tauTag);
-  //TH1F* h_tauTag_matched = new TH1F("tauTag","",2,0,2);
+  TH1F* h_tauTag_matched = new TH1F("tauTag","",2,0,2);
 
   Long64_t nentries = fChain->GetEntries();
   Long64_t nbytes = 0, nb = 0;
@@ -66,6 +66,7 @@ void tauAnalyzer::Loop()
 
     for(vector<int>::iterator iter=matchedIdx.begin(); iter!=matchedIdx.end(); ++iter){
       b_matched_tauTag.push_back(Jet_tauTag[*iter]);
+			h_tauTag_matched->Fill(Jet_tauTag[*iter]);
     }
 
     tree->Fill();
@@ -74,6 +75,7 @@ void tauAnalyzer::Loop()
   }
 
   tree->Write();
-  f->Close();
+  h_tauTag_matched->Write();
+	f->Close();
 
 }
