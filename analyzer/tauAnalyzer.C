@@ -41,11 +41,12 @@ void tauAnalyzer::Loop()
   tree->Branch("matched_tauTag", "std::vector<int>", &b_matched_tauTag);
   //TH1F* h_tauTag_matched = new TH1F("tauTag","",2,0,2);
 
-  Long64_t nentries = fChain->GetEntriesFast();
+  Long64_t nentries = fChain->GetEntries();
   Long64_t nbytes = 0, nb = 0;
 
   for(Long64_t jentry=0; jentry<nentries; jentry++) {
     fChain->GetEntry(jentry);
+    std::cout << jentry << " / " << nentries << '\r';
 
     vector<int> matchedIdx;
     TLorentzVector jet;
