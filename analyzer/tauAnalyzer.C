@@ -51,12 +51,12 @@ void tauAnalyzer::Loop(const std::string outFileName)
   TH1F* h_leptau_DR[7];
 
   for(int i=0; i < 7; i++){
-    h_tauTag_matched[i] = new TH1F(Form("h_nTauTag_matched_S%i", i),"",2,0,2);
-    h_jets_n[i] = new TH1F(Form("h_nJets_S%i", i),"",10,0,10);
-    h_bJets_n[i] = new TH1F(Form("h_nbJets_S%i", i),"",5,0,5);
-    h_tauJets_n[i] = new TH1F(Form("h_ntauJets_S%i", i),"",5,0,5);
-    h_lep_DR[i] = new TH1F(Form("h_lep_DR_S%i", i), "", 40, 0, 4);
-    h_leptau_DR[i] = new TH1F(Form("h_leptau_DR_S%i", i), "", 40, 0, 4);
+    h_tauTag_matched[i] = new TH1F(Form("h_nTauTag_matched_S%i", i),";#Tau Tagged",2,0,2);
+    h_jets_n[i] = new TH1F(Form("h_nJets_S%i", i),";Jet Multiplicity",10,0,10);
+    h_bJets_n[i] = new TH1F(Form("h_nbJets_S%i", i),";bJet Multiplicity",5,0,5);
+    h_tauJets_n[i] = new TH1F(Form("h_ntauJets_S%i", i),";#Tau Jet Multiplicity",5,0,5);
+    h_lep_DR[i] = new TH1F(Form("h_lep_DR_S%i", i), ";#Delta R_{ll}", 40, 0, 4);
+    h_leptau_DR[i] = new TH1F(Form("h_leptau_DR_S%i", i), ";#Delta R_{#Tau l}", 40, 0, 4);
 
     h_tauTag_matched[i]->Sumw2();
     h_jets_n[i]->Sumw2();
