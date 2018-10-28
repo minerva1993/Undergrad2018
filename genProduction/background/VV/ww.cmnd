@@ -1,0 +1,49 @@
+! File: main42.cmnd
+
+Main:numberOfEvents = 10000          ! number of events to generate
+
+! Settings related to output in init(), next() and stat().
+Init:showChangedSettings = on      ! list changed settings
+Init:showAllSettings = off         ! list all settings
+Init:showChangedParticleData = on  ! list changed particle data
+Init:showAllParticleData = off     ! list all particle data
+Next:numberCount = 1000            ! print message every n events
+Next:numberShowLHA = 1             ! print LHA information n times
+Next:numberShowInfo = 1            ! print event information n times
+Next:numberShowProcess = 1         ! print process record n times
+Next:numberShowEvent = 1           ! print event record n times
+Stat:showPartonLevel = on          ! additional statistics on MPI
+
+! Beam parameter settings. Values below agree with default ones.
+Beams:idA = 2212                   ! first beam, p = 2212, pbar = -2212
+Beams:idB = 2212                   ! second beam, p = 2212, pbar = -2212
+Beams:eCM = 13000.                 ! CM energy of collision
+
+WeakDoubleBoson:ffbar2WW=on
+Tune:pp=14
+Tune:ee=7
+PDF:pSet=20
+MultipartonInteractions:ecmPow=0.03344
+MultipartonInteractions:bProfile=2
+MultipartonInteractions:pT0Ref=1.41
+MultipartonInteractions:coreRadius=0.7634
+MultipartonInteractions:coreFraction=0.63
+ColourReconnection:range=5.176
+SigmaTotal:zeroAXB=off
+SpaceShower:alphaSorder=2
+SpaceShower:alphaSvalue=0.118
+SigmaProcess:alphaSvalue=0.118
+SigmaProcess:alphaSorder=2
+MultipartonInteractions:alphaSvalue=0.118
+MultipartonInteractions:alphaSorder=2
+TimeShower:alphaSorder=2
+TimeShower:alphaSvalue=0.118
+Tune:preferLHAPDF = 2
+Main:timesAllowErrors = 10000
+Check:epTolErr = 0.01
+Beams:setProductionScalesFromLHEF = off
+SLHA:keepSM = on
+SLHA:minMassSM = 1000.
+ParticleDecays:limitTau0 = on
+ParticleDecays:tau0Max = 10
+ParticleDecays:allowPhotonRadiation = on

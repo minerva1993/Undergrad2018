@@ -1,0 +1,5 @@
+cd pythia8235
+./configure --with-hepmc2=/some_path/MG5_aMC_v2_6_3_2/HEPTools/hepmc
+cd examples
+make main89
+./main89 ww.cmnd out.hepmc > out &
