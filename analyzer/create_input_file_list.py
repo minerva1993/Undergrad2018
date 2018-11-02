@@ -8,6 +8,7 @@ string_for_processing = ''
 
 #This part is for reconstruction
 for file_name in os.listdir(path_to_prod):
+  if file_name == ".gitkeep": continue
   tmp_string = ''
   tmp_string += os.path.join(os.path.abspath(path_to_prod), file_name)
   dataset_name = file_name
