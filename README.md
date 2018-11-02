@@ -1,7 +1,7 @@
 # Undergrad2018
 From Delphes2Flat
 ```{.Bash}
-ssh compute-0-2
+ssh -Y compute-0-2
 cd ./path_to/Delphes2Flat
 python create_input_file_list.py
 cat file_list.txt | xargs -i -P$(nproc) -n2 python run.py
@@ -10,8 +10,10 @@ cat file_list.txt | xargs -i -P$(nproc) -n2 python run.py
 Run analyzer
 ```{.Bash}
 root -l run.C'("input.root","outname.root")' #for one file
+python create_input_file_list.py
 source compile.sh #compile analyzer
 cat file_list.txt | xargs -i -P$(nproc) -n2 python launchAna.py
+source job_merge.sh
 ```
 
 PlotIt
@@ -30,5 +32,5 @@ cd ../
 make -j4
 
 #How to run
-path_to_/plotIt/plotIt -o path_to_figure_folder/ path_to_/plotIt/configs/config.yml -y
+path_to_/plotIt/plotIt -o plots/ path_to_/plotIt/configs/config.yml -y
 ```
