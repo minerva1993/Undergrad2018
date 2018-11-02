@@ -66,6 +66,12 @@ void tauAnalyzer::Loop(const std::string outFileName)
     h_leptau_DR[i]->Sumw2();
   }
 
+  TH1F* EventInfo;
+  EventInfo = new TH1F("EventInfo","EventInfo",2,0,2);
+  EventInfo->GetXaxis()->SetBinLabel(1,"Number of Events");
+  EventInfo->GetXaxis()->SetBinLabel(2,"Sum of Weights");
+
+
   //Event Loop
   Long64_t nentries = fChain->GetEntries();
   Long64_t nbytes = 0, nb = 0;
@@ -74,6 +80,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
     fChain->GetEntry(jentry);
     //std::cout << jentry << " / " << nentries << '\r';
 
+    EventInfo->Fill(0.5, 1.0);
     std::vector<int> GoodMuIdx, GoodElecIdx;
     int nGoodMuon = 0;
     int nGoodElectron= 0;
@@ -171,5 +178,6 @@ void tauAnalyzer::Loop(const std::string outFileName)
     h_lep_DR[i]->Write();
     h_leptau_DR[i]->Write();
   }
+  EventInfo->Write();
   f->Close();
 }
