@@ -2,10 +2,10 @@
 
 import sys
 if len(sys.argv) < 3:
-    print "%s INPUT1.root INPUT2.root INPUT2.root ... OUTPUT_PREFIX"
+    print "%s INPUT.root OUTPUT_PREFIX"
     sys.exit(1)
-inputFiles = sys.argv[1:-1]
-prefix = sys.argv[-1]
+inputFile = sys.argv[1]
+prefix = sys.argv[2]
 
 import os
 from ROOT import *
@@ -15,9 +15,8 @@ gSystem.AddDynamicPath(delphesPath)
 gSystem.AddLinkedLibs('-L"%s"' % delphesPath)
 gSystem.Load("libDelphes")
 
-gROOT.ProcessLine(".L makeFlatTuple.C++")
+gROOT.ProcessLine(".L makeFlatTuple.C+")
 
-for inFile in inputFiles:
-    outFile = "%s%s" % (prefix, os.path.basename(inFile))
-    gROOT.ProcessLine('makeFlatTuple("%s", "%s");' % (inFile, outFile))
+outFile = "./output/%s%s" % (prefix, os.path.basename(inputFile))
+gROOT.ProcessLine('makeFlatTuple("%s", "%s");' % (inputFile, outFile))
 
