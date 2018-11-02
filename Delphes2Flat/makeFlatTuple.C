@@ -130,11 +130,13 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   TClonesArray *branchEFlowPhoton = treeReader->UseBranch("EFlowPhoton");
   TClonesArray *branchEFlowNeutralHadron = treeReader->UseBranch("EFlowNeutralHadron");
 
+  cout << "Run on: " << foutName << endl;
+
   // Loop over all events
   for(Int_t entry = 0; entry < numberOfEntries; ++entry) {
     // Load selected branches with data from specified event
     treeReader->ReadEntry(entry);
-    std::cout << entry << '/' << numberOfEntries << '\r';
+    //std::cout << entry << '/' << numberOfEntries << '\r';
 
     const HepMCEvent* event = (const HepMCEvent*)branchEvent->At(0);
     b_event = event->Number;
