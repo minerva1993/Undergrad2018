@@ -111,14 +111,6 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
   tree->Branch("GenParticle_dau1", b_GenParticle_dau1, "GenParticle_dau1[nGenParticle]/S");
   tree->Branch("GenParticle_dau2", b_GenParticle_dau2, "GenParticle_dau2[nGenParticle]/S");
 
-  tree->Branch("nSubJet", &b_nSubJet, "nSubJet/s");
-  tree->Branch("SubJet_pt", b_SubJet_pt, "SubJet_pt[nSubJet]/F");
-  tree->Branch("SubJet_eta", b_SubJet_eta, "SubJet_eta[nSubJet]/F");
-  tree->Branch("SubJet_phi", b_SubJet_phi, "SubJet_phi[nSubJet]/F");
-  tree->Branch("SubJet_q", b_SubJet_q, "SubJet_q[nSubJet]/S");
-  tree->Branch("SubJet_pdgId", b_SubJet_pdgId, "SubJet_pdgId[nSubJet]/S");
-  tree->Branch("SubJet_jetIdx", b_SubJet_jetIdx, "SubJet_jetIdx[nSubJet]/S");
-
   // Create chain of root trees
   TChain chain("Delphes");
   chain.Add(finName.c_str());
@@ -321,41 +313,6 @@ void makeFlatTuple(const std::string finName, const std::string foutName)
       b_Jet_bTag[b_nJet] = ( jet->BTag & (1 << 0) );
       b_Jet_cTag[b_nJet] = ( jet->BTag & (1 << 1) );
 			b_Jet_tauTag[b_nJet] = jet->TauTag;			
-
-      // Keep the subjet particles
-      TRefArray cons = jet->Constituents;
-      for ( int j=0; j<cons.GetEntriesFast(); ++j ) {
-        if ( b_nSubJet > SubJet_N ) break;
-
-        const TObject* obj = cons.At(j);
-        if ( !obj ) continue;
-
-        //const GenParticle* p = dynamic_cast<const GenParticle*>(obj);
-        const Track* track = dynamic_cast<const Track*>(obj);
-        const Tower* tower = dynamic_cast<const Tower*>(obj);
-        if ( track ) {
-          b_SubJet_pt[b_nSubJet] = track->PT;
-          b_SubJet_eta[b_nSubJet] = track->Eta;
-          b_SubJet_phi[b_nSubJet] = track->Phi;
-          b_SubJet_q[b_nSubJet] = track->Charge;
-          b_SubJet_pdgId[b_nSubJet] = track->Charge*211;
-        }
-        else if ( tower ) {
-          b_SubJet_pt[b_nSubJet] = tower->ET;
-          b_SubJet_eta[b_nSubJet] = tower->Eta;
-          b_SubJet_phi[b_nSubJet] = tower->Phi;
-          b_SubJet_q[b_nSubJet] = 0;
-          const bool isPhoton = ( tower->Eem > tower->Ehad ); // Crude estimation
-          if ( isPhoton ) b_SubJet_pdgId[b_nSubJet] = 22; // photons
-          else b_SubJet_pdgId[b_nSubJet] = 2112; // set as neutron
-        }
-        else {
-          std::cout << obj->IsA()->GetName() << endl;
-          continue;
-        }
-        b_SubJet_jetIdx[b_nSubJet] = b_nJet;
-        ++b_nSubJet;
-      }
 
       ++b_nJet;
       if ( b_nJet >= Jet_N ) break;
