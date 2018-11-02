@@ -13,3 +13,22 @@ root -l run.C'("input.root","outname.root")'
 #or
 source job.sh
 ```
+
+PlotIt
+```{.Bash}
+#First make cmssw env.
+cd ~
+cmsrel CMSSW_9_4_9_cand2
+cd CMSSW_9_4_9_cand2/src/
+cmsenv
+cp -r ~/path_to_plotIt/plotIt ./
+cd plotIt
+source setup_for_cmsenv.sh
+cd external
+./build-external.sh
+cd ../
+make -j4
+
+#How to run
+path_to_/plotIt/plotIt -o path_to_figure_folder/ path_to_/plotIt/configs/config.yml -y
+```
