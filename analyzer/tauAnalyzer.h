@@ -63,13 +63,6 @@ public :
    Short_t         GenParticle_mother[9];   //[nGenParticle]
    Short_t         GenParticle_dau1[9];   //[nGenParticle]
    Short_t         GenParticle_dau2[9];   //[nGenParticle]
-   UShort_t        nSubJet;
-   Float_t         SubJet_pt[197];   //[nSubJet]
-   Float_t         SubJet_eta[197];   //[nSubJet]
-   Float_t         SubJet_phi[197];   //[nSubJet]
-   Short_t         SubJet_q[197];   //[nSubJet]
-   Short_t         SubJet_pdgId[197];   //[nSubJet]
-   Short_t         SubJet_jetIdx[197];   //[nSubJet]
 
    // List of branches
    TBranch        *b_run;   //!
@@ -110,13 +103,6 @@ public :
    TBranch        *b_GenParticle_mother;   //!
    TBranch        *b_GenParticle_dau1;   //!
    TBranch        *b_GenParticle_dau2;   //!
-   TBranch        *b_nSubJet;   //!
-   TBranch        *b_SubJet_pt;   //!
-   TBranch        *b_SubJet_eta;   //!
-   TBranch        *b_SubJet_phi;   //!
-   TBranch        *b_SubJet_q;   //!
-   TBranch        *b_SubJet_pdgId;   //!
-   TBranch        *b_SubJet_jetIdx;   //!
 
    tauAnalyzer(TTree *tree=0);
    virtual ~tauAnalyzer();
@@ -226,13 +212,6 @@ void tauAnalyzer::Init(TTree *tree)
    fChain->SetBranchAddress("GenParticle_mother", GenParticle_mother, &b_GenParticle_mother);
    fChain->SetBranchAddress("GenParticle_dau1", GenParticle_dau1, &b_GenParticle_dau1);
    fChain->SetBranchAddress("GenParticle_dau2", GenParticle_dau2, &b_GenParticle_dau2);
-   fChain->SetBranchAddress("nSubJet", &nSubJet, &b_nSubJet);
-   fChain->SetBranchAddress("SubJet_pt", SubJet_pt, &b_SubJet_pt);
-   fChain->SetBranchAddress("SubJet_eta", SubJet_eta, &b_SubJet_eta);
-   fChain->SetBranchAddress("SubJet_phi", SubJet_phi, &b_SubJet_phi);
-   fChain->SetBranchAddress("SubJet_q", SubJet_q, &b_SubJet_q);
-   fChain->SetBranchAddress("SubJet_pdgId", SubJet_pdgId, &b_SubJet_pdgId);
-   fChain->SetBranchAddress("SubJet_jetIdx", SubJet_jetIdx, &b_SubJet_jetIdx);
    Notify();
 }
 

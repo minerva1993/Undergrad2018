@@ -72,7 +72,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
 
   for(Long64_t jentry=0; jentry<nentries; jentry++) {
     fChain->GetEntry(jentry);
-    std::cout << jentry << " / " << nentries << '\r';
+    //std::cout << jentry << " / " << nentries << '\r';
 
     std::vector<int> GoodMuIdx, GoodElecIdx;
     int nGoodMuon = 0;
