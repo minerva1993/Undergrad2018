@@ -4,7 +4,7 @@ configuration:
   luminosity-label: '%1$.0f fb^{-1} at #sqrt{s} = 13 TeV'
   experiment: " Delphes Sim"
   #extra-label: "Preliminary"
-  extra-label: "Signal * 10^{5}"
+  extra-label: "Signal * 10^{4}"
   root: ''
   luminosity: 100000
   yields-table-align: v
