@@ -579,7 +579,7 @@ namespace plotIt {
 
     float safe_margin = .20;
     if (plot.log_y)
-      safe_margin = 8;
+      safe_margin = 50;
 
     if (! y_axis_range.valid()) {
       maximum *= 1 + safe_margin;

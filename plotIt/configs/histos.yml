@@ -1,0 +1,33 @@
+'h_nJets_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  signal-normalize-data: false
+  no-data: true
+  y-axis-auto-range: false
+  save-extensions: ['pdf']
+  show-ratio: false
+
+'h_nbJets_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  signal-normalize-data: false
+  no-data: true
+  y-axis-auto-range: false
+  save-extensions: ['pdf']
+  show-ratio: false
+
+'h_ntauJets_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  signal-normalize-data: false
+  no-data: true
+  y-axis-auto-range: false
+  save-extensions: ['pdf']
+  show-ratio: false
+
