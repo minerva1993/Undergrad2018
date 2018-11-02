@@ -9,9 +9,9 @@ cat file_list.txt | xargs -i -P$(nproc) -n2 python run.py
 
 Run analyzer
 ```{.Bash}
-root -l run.C'("input.root","outname.root")'
-#or
-source job.sh
+root -l run.C'("input.root","outname.root")' #for one file
+source compile.sh #compile analyzer
+cat file_list.txt | xargs -i -P$(nproc) -n2 python launchAna.py
 ```
 
 PlotIt
