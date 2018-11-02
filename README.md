@@ -1,7 +1,10 @@
 # Undergrad2018
 From Delphes2Flat
 ```{.Bash}
-./run.py INPUT1.root INPUT2.root ... output_prefix
+ssh compute-0-2
+cd ./path_to/Delphes2Flat
+python create_input_file_list.py
+cat file_list.txt | xargs -i -P$(nproc) -n2 python run.py
 ```
 
 Run analyzer
