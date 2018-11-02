@@ -1,22 +1,17 @@
 configuration:
   width: 450
   height: 450
-  luminosity-label: '%1$.1f fb^{-1} at #sqrt{s} = 13 TeV'
+  luminosity-label: '%1$.0f fb^{-1} at #sqrt{s} = 13 TeV'
   experiment: " Delphes Sim"
   #extra-label: "Preliminary"
   extra-label: "Signal * 10^{5}"
   root: ''
   luminosity: 100000
-  #luminosity-error: 0.023
-  error-fill-style: 3154
-  error-fill-color: "#ee556270"
   yields-table-align: v
   book-keeping-file: 'plots.root'
 
 files: 
   include: ['files.yml']
-
-systematics:
 
 plots:
   include: ['histos.yml']

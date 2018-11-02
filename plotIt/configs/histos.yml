@@ -5,9 +5,10 @@
   sort-by-yields: true
   signal-normalize-data: false
   no-data: true
+  show-ratio: false
+  show-errors: false
   y-axis-auto-range: false
   save-extensions: ['pdf']
-  show-ratio: false
 
 'h_nbJets_S4':
   y-axis: "Events"
@@ -16,9 +17,10 @@
   sort-by-yields: true
   signal-normalize-data: false
   no-data: true
+  show-ratio: false
+  show-errors: false
   y-axis-auto-range: false
   save-extensions: ['pdf']
-  show-ratio: false
 
 'h_ntauJets_S4':
   y-axis: "Events"
@@ -27,7 +29,8 @@
   sort-by-yields: true
   signal-normalize-data: false
   no-data: true
+  show-ratio: false
+  show-errors: false
   y-axis-auto-range: false
   save-extensions: ['pdf']
-  show-ratio: false
 

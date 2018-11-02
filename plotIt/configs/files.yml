@@ -3,7 +3,7 @@
   pretty-name: 'LQcmutauLO'
   cross-section: 0.00083176
   generated-events: 100000
-  line-color: '#006666'
+  line-color: '#00ffff'
   legend: '#mu#tau'
   scale: 10000
   order: 1
@@ -13,7 +13,7 @@
   pretty-name: 'LQcnunuLO'
   cross-section: 0.00083176
   generated-events: 100000
-  line-color: '#0000cc'
+  line-color: '#ffff00'
   legend: '#nu#nu'
   scale: 10000
   order: 2
@@ -23,7 +23,7 @@
   pretty-name: 'LQctautauLO'
   cross-section: 0.00083176
   generated-events: 100000
-  line-color: '#666600'
+  line-color: '#ff0000'
   legend: '#tau#tau'
   scale: 10000
   order: 3
