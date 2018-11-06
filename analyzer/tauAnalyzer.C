@@ -41,6 +41,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
   int nCuts = 13;
   int nCh = 8;
   int jets_n, bJets_n, cJets_n, tauJets_n;
+  float jet_pt_sum;
 
   tree->Branch("matched_tauTag", "std::vector<int>", &b_matched_tauTag);
  
@@ -51,6 +52,8 @@ void tauAnalyzer::Loop(const std::string outFileName)
   TH1F* h_tauJets_n[8][18];
   TH1F* h_lep_DR[8][13];
   TH1F* h_leptau_DR[8][13];
+  TH1F* h_MET[8][13];
+  TH1F* h_jet_pt_sum[8][13];
 
   for(int ch=0; ch < nCh; ch++){
     for(int i=0; i < nCuts; i++){
@@ -61,6 +64,8 @@ void tauAnalyzer::Loop(const std::string outFileName)
       h_tauJets_n[ch][i] = new TH1F(Form("h_ntauJets_Ch%i_S%i",ch,i),";#Tau Jet Multiplicity",5,0,5);
       h_lep_DR[ch][i] = new TH1F(Form("h_lep_DR_Ch%i_S%i",ch,i), ";#Delta R_{ll}", 40, 0, 4);
       h_leptau_DR[ch][i] = new TH1F(Form("h_leptau_DR_Ch%i_S%i",ch,i), ";#Delta R_{#Tau l}", 40, 0, 4);
+      h_MET[ch][i] = new TH1F(Form("h_MET_Ch%i_S%i",ch,i), ";MET", 40, 0, 300);
+      h_jet_pt_sum[ch][i] = new TH1F(Form("h_jet_pt_sum%i_S%i",ch,i), "Sum of Jet pt",40,0,1000);
 
       h_tauTag_matched[ch][i]->Sumw2();
       h_jets_n[ch][i]->Sumw2();
@@ -69,6 +74,8 @@ void tauAnalyzer::Loop(const std::string outFileName)
       h_tauJets_n[ch][i]->Sumw2();
       h_lep_DR[ch][i]->Sumw2();
       h_leptau_DR[ch][i]->Sumw2();
+      h_MET[ch][i]->Sumw2();
+      h_jet_pt_sum[ch][i]->Sumw2();
     }
   }
 
@@ -115,6 +122,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
     bJets_n = 0;
     cJets_n = 0;
     tauJets_n = 0;
+    jet_pt_sum = 0;
 
     //lepton selection
     bool pass_lep[8];
@@ -132,6 +140,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
       if(Jet_pt[i] > 30 && abs(Jet_eta[i]) < 2.4){
         jet.SetPtEtaPhiM(Jet_pt[i],Jet_eta[i],Jet_phi[i], Jet_m[i]);
         jets_n++;
+        jet_pt_sum += Jet_pt[i];
 
         TLorentzVector genParticle;
         for(int j=0; j<nGenParticle; j++){
@@ -176,6 +185,8 @@ void tauAnalyzer::Loop(const std::string outFileName)
           h_bJets_n[MODE][cut]->Fill(bJets_n);
           h_cJets_n[MODE][cut]->Fill(cJets_n);
           h_tauJets_n[MODE][cut]->Fill(tauJets_n);
+          h_MET[MODE][cut]->Fill(MET_pt);
+          h_jet_pt_sum[MODE][cut]->Fill(jet_pt_sum);
 
           for(int i = 0; i < nGoodMuon; i++){
             int idx = GoodMuIdx.at(i);
@@ -218,6 +229,8 @@ void tauAnalyzer::Loop(const std::string outFileName)
       h_tauTag_matched[ch][i]->Write();
       h_lep_DR[ch][i]->Write();
       h_leptau_DR[ch][i]->Write();
+      h_MET[ch][i]->Write();
+      h_jet_pt_sum[ch][i]->Write();
     }
   }
   EventInfo->Write();
