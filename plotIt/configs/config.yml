@@ -6,7 +6,7 @@ configuration:
   #extra-label: "Preliminary"
   extra-label: "Signal * 10^{4}"
   root: ''
-  luminosity: 100000
+  luminosity: 3000000
   yields-table-align: v
   book-keeping-file: 'plots.root'
 
