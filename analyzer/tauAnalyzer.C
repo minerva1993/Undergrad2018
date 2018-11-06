@@ -101,7 +101,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
     for(int i = 0; i < nElectron; i++){
       if(GoodElecIdx.size() == 0 && Electron_pt[i] > 35 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.15)
         GoodElecIdx.push_back(i);
-      else if(GoodElecIdx.size() > 0 && Electron_pt[i] > 35 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.15)
+      else if(GoodElecIdx.size() > 0 && Electron_pt[i] > 30 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.15)
         GoodElecIdx.push_back(i);
     }
 
