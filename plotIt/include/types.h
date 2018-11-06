@@ -278,10 +278,10 @@ namespace plotIt {
     std::string book_keeping_folder;
     std::vector<RenameOp> renaming_ops;
 
-    bool no_data = false;
+    bool no_data = true;
     bool override = false; // flag to plot only those which have it true (if at least one plot has it true)
     bool normalized = false;
-    bool signal_normalize_data = true;
+    bool signal_normalize_data = false;
     bool log_y = false;
     bool log_x = false;
 
@@ -292,7 +292,7 @@ namespace plotIt {
     std::string ratio_y_axis_title = "Data / MC";
 
     // Axis range
-    bool y_axis_auto_range = true; //not for log plot
+    bool y_axis_auto_range = false; //not for log plot
     Range x_axis_range;
     Range log_x_axis_range;
     Range y_axis_range;
@@ -310,7 +310,7 @@ namespace plotIt {
 
     std::vector<std::string> save_extensions = {"pdf"};
 
-    bool show_ratio = true;
+    bool show_ratio = false;
 
     bool fit = false;
     std::string fit_function = "gaus";
@@ -324,7 +324,7 @@ namespace plotIt {
     Point ratio_fit_legend_position = {0.20, 0.38};
     Range ratio_fit_range;
 
-    bool show_errors = true;
+    bool show_errors = false;
     bool show_overflow = true;
 
     std::string inherits_from = "TH1";
