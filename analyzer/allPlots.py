@@ -12,7 +12,7 @@ sig3samples=OrderedDict()
 bkgsamples=OrderedDict()
 
 log=True
-lumi = 100000
+lumi = 3000000
 
 def AddBkg(fname, name, color, xsection):
   tmp = {}
@@ -100,8 +100,8 @@ AddBkg("hist_W1JetsToLNu.root","WJets",ROOT.kOrange+1,9816)
 AddBkg("hist_W2JetsToLNu.root","WJets",ROOT.kOrange+1,3200)
 AddBkg("hist_TT012Jets.root","TT",ROOT.kRed-7, 831.76)
 AddSig1("hist_LQcmutauLO.root", "#mu#tau", 7, 0.00083176*2)
-AddSig2("hist_LQctautauLO.root", "#tau#tau", 5, 0.00083176*2)
-AddSig3("hist_LQcnunuLO.root", "#nu#nu", 2, 0.00083176*2)
+AddSig2("hist_LQctautauLO.root", "#tau#tau", 3, 0.00083176*2)
+AddSig3("hist_LQcnunuLO.root", "#nu#nu", 5, 0.00083176*2)
 
 N_bkgsamples = len(bkgsamples)
 N_hist = len(sig1samples[sig1samples.keys()[0]]["hname"])
@@ -188,6 +188,7 @@ for i in range(0, N_hist):
     m = m+1
     nsig1 = numevt
   h_sig1.Scale(10000)
+  h_sig1.SetLineWidth(2)
 
 
   #Signal
@@ -215,6 +216,7 @@ for i in range(0, N_hist):
     m = m+1
     nsig2 = numevt
   h_sig2.Scale(10000)
+  h_sig2.SetLineWidth(2)
 
   #Signal
   m = 0
@@ -241,6 +243,7 @@ for i in range(0, N_hist):
     m = m+1
     nsig3 = numevt
   h_sig3.Scale(10000)
+  h_sig3.SetLineWidth(2)
 
   if hnames[1] == printHistName :
     if ntotalbkg > 0:
@@ -263,18 +266,24 @@ for i in range(0, N_hist):
       maxfrac = 1000
     else:
       maxfrac = 100
-  hs.SetMaximum(max_hs+max_hs*maxfrac)
-  if log: hs.SetMinimum(0.5)
-  hs.Draw("hist")
-  hs.SetTitle("")
-  hs.GetYaxis().SetTitle("Entries")
-  hs.GetYaxis().SetTitleOffset(1.2)
+  #hs.SetMaximum(max_hs+max_hs*maxfrac)
+  h_sig1.SetMaximum(max_hs+max_hs*maxfrac)
+  #if log: hs.SetMinimum(10)
+  if log: h_sig1.SetMinimum(10)
+  h_sig1.Draw("hist same")
+  h_sig1.SetTitle("")
+  h_sig1.GetYaxis().SetTitle("Entries")
+  h_sig1.GetYaxis().SetTitleOffset(1.5)
+  #hs.Draw("hist")
+  #hs.SetTitle("")
+  #hs.GetYaxis().SetTitle("Entries")
+  #hs.GetYaxis().SetTitleOffset(1.5)
+  hs.Draw("hist same")
   h_sig1.Draw("hist same")
   h_sig2.Draw("hist same")
   h_sig3.Draw("hist same")
+  h_sig1.Draw("axis same")
 
-
-  l.AddEntry(hs,"Data","P")
   l.Draw()
   label = TPaveText()
   label.SetX1NDC(gStyle.GetPadLeftMargin())

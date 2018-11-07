@@ -50,32 +50,32 @@ void tauAnalyzer::Loop(const std::string outFileName)
   TH1F* h_bJets_n[8][13];
   TH1F* h_cJets_n[8][13];
   TH1F* h_tauJets_n[8][18];
-  TH1F* h_lep_DR[8][13];
+  TH1F* h_lepDR[8][13];
   TH1F* h_leptau_DR[8][13];
   TH1F* h_MET[8][13];
-  TH1F* h_jet_pt_sum[8][13];
+  TH1F* h_jetptsum[8][13];
 
   for(int ch=0; ch < nCh; ch++){
     for(int i=0; i < nCuts; i++){
-      h_tauTag_matched[ch][i] = new TH1F(Form("h_nTauTag_matched_Ch%i_S%i",ch,i),";#Tau Tagged",2,0,2);
+      h_tauTag_matched[ch][i] = new TH1F(Form("h_nTauTagmatched_Ch%i_S%i",ch,i),";#tau Tagged",2,0,2);
       h_jets_n[ch][i] = new TH1F(Form("h_nJets_Ch%i_S%i",ch,i),";Jet Multiplicity",10,0,10);
-      h_bJets_n[ch][i] = new TH1F(Form("h_nbJets_Ch%i_S%i",ch,i),";bJet Multiplicity",5,0,5);
-      h_cJets_n[ch][i] = new TH1F(Form("h_ncJets_Ch%i_S%i",ch,i),";bJet Multiplicity",5,0,5);
-      h_tauJets_n[ch][i] = new TH1F(Form("h_ntauJets_Ch%i_S%i",ch,i),";#Tau Jet Multiplicity",5,0,5);
-      h_lep_DR[ch][i] = new TH1F(Form("h_lep_DR_Ch%i_S%i",ch,i), ";#Delta R_{ll}", 40, 0, 4);
-      h_leptau_DR[ch][i] = new TH1F(Form("h_leptau_DR_Ch%i_S%i",ch,i), ";#Delta R_{#Tau l}", 40, 0, 4);
-      h_MET[ch][i] = new TH1F(Form("h_MET_Ch%i_S%i",ch,i), ";MET", 40, 0, 300);
-      h_jet_pt_sum[ch][i] = new TH1F(Form("h_jet_pt_sum%i_S%i",ch,i), "Sum of Jet pt",40,0,1000);
+      h_bJets_n[ch][i] = new TH1F(Form("h_nbJets_Ch%i_S%i",ch,i),";b jet Multiplicity",5,0,5);
+      h_cJets_n[ch][i] = new TH1F(Form("h_ncJets_Ch%i_S%i",ch,i),";c jet Multiplicity",5,0,5);
+      h_tauJets_n[ch][i] = new TH1F(Form("h_ntauJets_Ch%i_S%i",ch,i),";#tau Jet Multiplicity",5,0,5);
+      h_lepDR[ch][i] = new TH1F(Form("h_lepDR_Ch%i_S%i",ch,i), ";#Delta R_{ll}", 40, 0, 4);
+      h_leptau_DR[ch][i] = new TH1F(Form("h_leptauDR_Ch%i_S%i",ch,i), ";#Delta R_{#tau l}", 40, 0, 4);
+      h_MET[ch][i] = new TH1F(Form("h_MET_Ch%i_S%i",ch,i), ";MET (GeV)", 40, 0, 300);
+      h_jetptsum[ch][i] = new TH1F(Form("h_jetPtsum_Ch%i_S%i",ch,i), ";H_{T} (GeV)",40,0,1000);
 
       h_tauTag_matched[ch][i]->Sumw2();
       h_jets_n[ch][i]->Sumw2();
       h_bJets_n[ch][i]->Sumw2();
       h_cJets_n[ch][i]->Sumw2();
       h_tauJets_n[ch][i]->Sumw2();
-      h_lep_DR[ch][i]->Sumw2();
+      h_lepDR[ch][i]->Sumw2();
       h_leptau_DR[ch][i]->Sumw2();
       h_MET[ch][i]->Sumw2();
-      h_jet_pt_sum[ch][i]->Sumw2();
+      h_jetptsum[ch][i]->Sumw2();
     }
   }
 
@@ -106,9 +106,9 @@ void tauAnalyzer::Loop(const std::string outFileName)
         GoodMuIdx.push_back(i);
     }
     for(int i = 0; i < nElectron; i++){
-      if(GoodElecIdx.size() == 0 && Electron_pt[i] > 35 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.15)
+      if(GoodElecIdx.size() == 0 && Electron_pt[i] > 35 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.25)
         GoodElecIdx.push_back(i);
-      else if(GoodElecIdx.size() > 0 && Electron_pt[i] > 30 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.15)
+      else if(GoodElecIdx.size() > 0 && Electron_pt[i] > 30 && std::abs(Electron_eta[i]) < 2.4 && Electron_relIso[i] < 0.25)
         GoodElecIdx.push_back(i);
     }
 
@@ -186,7 +186,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
           h_cJets_n[MODE][cut]->Fill(cJets_n);
           h_tauJets_n[MODE][cut]->Fill(tauJets_n);
           h_MET[MODE][cut]->Fill(MET_pt);
-          h_jet_pt_sum[MODE][cut]->Fill(jet_pt_sum);
+          h_jetptsum[MODE][cut]->Fill(jet_pt_sum);
 
           for(int i = 0; i < nGoodMuon; i++){
             int idx = GoodMuIdx.at(i);
@@ -204,7 +204,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
           b_matched_tauTag.clear();
 
           TLorentzVector tau;
-          if( MODE >= 3 ) h_lep_DR[MODE][cut]->Fill(lepton[0].DeltaR(lepton[1]));
+          if( MODE >= 3 ) h_lepDR[MODE][cut]->Fill(lepton[0].DeltaR(lepton[1]));
 /*
           if( cut == 6 ){
             for(vector<int>::iterator iter=tauIdx.begin(); iter!=tauIdx.end(); ++iter){
@@ -227,10 +227,10 @@ void tauAnalyzer::Loop(const std::string outFileName)
       h_cJets_n[ch][i]->Write();
       h_tauJets_n[ch][i]->Write();
       h_tauTag_matched[ch][i]->Write();
-      h_lep_DR[ch][i]->Write();
+      h_lepDR[ch][i]->Write();
       h_leptau_DR[ch][i]->Write();
       h_MET[ch][i]->Write();
-      h_jet_pt_sum[ch][i]->Write();
+      h_jetptsum[ch][i]->Write();
     }
   }
   EventInfo->Write();
