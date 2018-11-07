@@ -308,7 +308,7 @@ for i in range(0, N_hist):
     logname = "_log"
 
   #c.Print(datasamples[datasamples.keys()[mode]]["hname"][i]+logname+".pdf")
-  hs.SetTitle(hnames[2]+"_"+hnames[3])
+  h_sig1.SetTitle(hnames[2]+"_"+hnames[3])
   filename = "result"+logname+".pdf"
   if i == 0 and N_hist > 1:
     c.Print( (filename+"(") )

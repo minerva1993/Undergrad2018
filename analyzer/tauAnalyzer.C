@@ -38,22 +38,22 @@ void tauAnalyzer::Loop(const std::string outFileName)
 
   std::vector<int> b_matched_tauTag;
 
-  int nCuts = 13;
-  int nCh = 8;
+  int nCuts = 19;
+  int nCh = 10;
   int jets_n, bJets_n, cJets_n, tauJets_n;
   float jet_pt_sum;
 
   tree->Branch("matched_tauTag", "std::vector<int>", &b_matched_tauTag);
  
-  TH1F* h_tauTag_matched[8][13];
-  TH1F* h_jets_n[8][13];
-  TH1F* h_bJets_n[8][13];
-  TH1F* h_cJets_n[8][13];
-  TH1F* h_tauJets_n[8][18];
-  TH1F* h_lepDR[8][13];
-  TH1F* h_leptau_DR[8][13];
-  TH1F* h_MET[8][13];
-  TH1F* h_jetptsum[8][13];
+  TH1F* h_tauTag_matched[10][19];
+  TH1F* h_jets_n[10][19];
+  TH1F* h_bJets_n[10][19];
+  TH1F* h_cJets_n[10][19];
+  TH1F* h_tauJets_n[10][19];
+  TH1F* h_lepDR[10][19];
+  TH1F* h_leptau_DR[10][19];
+  TH1F* h_MET[10][19];
+  TH1F* h_jetptsum[10][19];
 
   for(int ch=0; ch < nCh; ch++){
     for(int i=0; i < nCuts; i++){
@@ -83,7 +83,6 @@ void tauAnalyzer::Loop(const std::string outFileName)
   EventInfo = new TH1F("EventInfo","EventInfo",2,0,2);
   EventInfo->GetXaxis()->SetBinLabel(1,"Number of Events");
   EventInfo->GetXaxis()->SetBinLabel(2,"Sum of Weights");
-
 
   //Event Loop
   Long64_t nentries = fChain->GetEntries();
@@ -125,7 +124,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
     jet_pt_sum = 0;
 
     //lepton selection
-    bool pass_lep[8];
+    bool pass_lep[nCh];
     pass_lep[0] = (nGoodMuon==1) && (nGoodElectron==0);
     pass_lep[1] = (nGoodMuon==0) && (nGoodElectron==1);
     pass_lep[2] = (pass_lep[0] || pass_lep[1]); 
@@ -133,7 +132,9 @@ void tauAnalyzer::Loop(const std::string outFileName)
     pass_lep[4] = (nGoodMuon==0) && (nGoodElectron==2);
     pass_lep[5] = (nGoodMuon==1) && (nGoodElectron==1);
     pass_lep[6] = (pass_lep[3] || pass_lep[4] || pass_lep[5]);
-    pass_lep[7] = (nGoodMuon+nGoodElectron==3);
+    pass_lep[7] = (nGoodMuon+nGoodElectron == 3);
+    pass_lep[8] = (nGoodMuon+nGoodElectron >= 1);
+    pass_lep[9] = (nGoodMuon+nGoodElectron >= 2);
 
     //Jet multiplicity
     for(int i=0; i<nJet; i++){
@@ -169,16 +170,22 @@ void tauAnalyzer::Loop(const std::string outFileName)
     eventSelection[4] = jets_n >= 2 && tauJets_n == 2;
     eventSelection[5] = jets_n >= 2 && bJets_n == 1 && tauJets_n == 1;
     eventSelection[6] = jets_n >= 2 && bJets_n == 1 && tauJets_n == 2;
-    eventSelection[7] = jets_n >= 3;
-    eventSelection[8] = jets_n >= 3 && bJets_n == 1;
-    eventSelection[9] = jets_n >= 3 && tauJets_n == 1;
-    eventSelection[10] = jets_n >= 3 && tauJets_n == 2;
-    eventSelection[11] = jets_n >= 3 && bJets_n == 1 && tauJets_n == 1;
-    eventSelection[12] = jets_n >= 3 && bJets_n == 1 && tauJets_n == 2;
+    eventSelection[7] = jets_n >= 2 && bJets_n >= 1 && tauJets_n >= 1;
+    eventSelection[8] = jets_n >= 2 && bJets_n >= 1 && tauJets_n >= 2;
+    eventSelection[9] = jets_n >= 2 && bJets_n >= 1 && MET_pt > 100;
+    eventSelection[10] = jets_n >= 3;
+    eventSelection[11] = jets_n >= 3 && bJets_n == 1;
+    eventSelection[12] = jets_n >= 3 && tauJets_n == 1;
+    eventSelection[13] = jets_n >= 3 && tauJets_n == 2;
+    eventSelection[14] = jets_n >= 3 && bJets_n == 1 && tauJets_n == 1;
+    eventSelection[15] = jets_n >= 3 && bJets_n == 1 && tauJets_n == 2;
+    eventSelection[16] = jets_n >= 3 && bJets_n >= 1 && tauJets_n >= 1;
+    eventSelection[17] = jets_n >= 3 && bJets_n >= 1 && tauJets_n >= 2;
+    eventSelection[18] = jets_n >= 3 && bJets_n >= 1 && MET_pt > 100;
 
     TLorentzVector lepton[nGoodMuon + nGoodElectron];
 
-    for(int MODE = 0; MODE< 8; MODE++){
+    for(int MODE = 0; MODE < nCh; MODE++){
       for(int cut = 0; cut < nCuts; cut++) {
         if( eventSelection[cut] && pass_lep[MODE] ) {
           h_jets_n[MODE][cut]->Fill(jets_n);
@@ -204,7 +211,7 @@ void tauAnalyzer::Loop(const std::string outFileName)
           b_matched_tauTag.clear();
 
           TLorentzVector tau;
-          if( MODE >= 3 ) h_lepDR[MODE][cut]->Fill(lepton[0].DeltaR(lepton[1]));
+          if( MODE >= 3 && MODE != 8 ) h_lepDR[MODE][cut]->Fill(lepton[0].DeltaR(lepton[1]));
 /*
           if( cut == 6 ){
             for(vector<int>::iterator iter=tauIdx.begin(); iter!=tauIdx.end(); ++iter){
