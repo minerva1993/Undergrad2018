@@ -110,11 +110,12 @@ fNevt = open("Nevt.txt",'w')
 
 for i in range(0, N_hist):
 
-  hnames = sig1samples[sig1samples.keys()[0]]["hname"][i].split("_")
-  string0 = "%s \n" %hnames
-  fNevt.write(string0)
-
   printHistName = "nJets"
+
+  hnames = sig1samples[sig1samples.keys()[0]]["hname"][i].split("_")
+  if hnames[1] == printHistName :
+    string0 = "%s \n" %hnames
+    fNevt.write(string0)
 
   if hnames[1] == printHistName :
     print hnames[1], " ", hnames[2], " ", hnames[3]  
