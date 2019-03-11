@@ -27,7 +27,7 @@ for items in merge:
   if math.isnan(items[2]) or math.isnan(items[3]) or math.isnan(items[4]): continue
   merge2.append(items)
 
-print merge2
+#print merge2
 
 merge2.sort(key = lambda x: x[2], reverse = True)
 print "high 10 muta: "
