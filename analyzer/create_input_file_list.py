@@ -27,7 +27,8 @@ for file_name in os.listdir(path_to_prod):
   if dataset not in dataset_list:
     dataset_list.append(dataset)
 
-for tmp_set in dataset_list:  
+string_for_merging += 'rm merged/hist_*\n'
+for tmp_set in dataset_list:
   string_for_merging += 'hadd merged/hist_' + tmp_set + '.root output/hist_' + tmp_set + '*.root\n'
 
 with open(merge_file, 'w') as f:

@@ -42,7 +42,7 @@
   pretty-name: 'W0JetsToLNu'
   cross-section: 47071
   generated-events: 750000
-  fill-color: '#660000'
+  fill-color: '#ff9933'
   group: GWJets
   order: 1
 
@@ -51,7 +51,7 @@
   pretty-name: 'W1JetsToLNu'
   cross-section: 9816
   generated-events: 376230
-  fill-color: '#990000'
+  fill-color: '#ff9933'
   group: GWJets
   order: 2
 
@@ -60,7 +60,7 @@
   pretty-name: 'W2JetsToLNu'
   cross-section: 3200
   generated-events: 196803
-  fill-color: '#cc0000'
+  fill-color: '#ff9933'
   group: GWJets
   order: 3
 

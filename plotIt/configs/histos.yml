@@ -1,36 +1,527 @@
-'h_nJets_S4':
+'h_nJets_Ch2_S1':
   y-axis: "Events"
   y-axis-format: "%1% / %2$.2f"
   log-y: true
   sort-by-yields: true
-  signal-normalize-data: false
-  no-data: true
-  show-ratio: false
-  show-errors: false
-  y-axis-auto-range: false
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch6_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch7_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nbJets_Ch2_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
   save-extensions: ['pdf']
 
-'h_nbJets_S4':
+'h_nbJets_Ch6_S1':
   y-axis: "Events"
   y-axis-format: "%1% / %2$.2f"
   log-y: true
   sort-by-yields: true
-  signal-normalize-data: false
-  no-data: true
-  show-ratio: false
-  show-errors: false
-  y-axis-auto-range: false
   save-extensions: ['pdf']
 
-'h_ntauJets_S4':
+'h_nbJets_Ch7_S1':
   y-axis: "Events"
   y-axis-format: "%1% / %2$.2f"
   log-y: true
   sort-by-yields: true
-  signal-normalize-data: false
-  no-data: true
-  show-ratio: false
-  show-errors: false
-  y-axis-auto-range: false
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch2_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch6_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  
+'h_ncJets_Ch7_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch2_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch6_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch7_S1':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+#########
+'h_nJets_Ch2_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch6_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch7_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nbJets_Ch2_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch6_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch7_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch2_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch6_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  
+'h_ncJets_Ch7_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch2_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch6_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch7_S2':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+############
+'h_nJets_Ch2_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch6_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch7_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nbJets_Ch2_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch6_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch7_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch2_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch6_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  
+'h_ncJets_Ch7_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch2_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch6_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch7_S3':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+##########
+'h_nJets_Ch2_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch6_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch7_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nbJets_Ch2_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch6_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch7_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch2_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch6_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  
+'h_ncJets_Ch7_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch2_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch6_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch7_S4':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+#############
+'h_nJets_Ch2_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch6_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch7_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nbJets_Ch2_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch6_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch7_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch2_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch6_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  
+'h_ncJets_Ch7_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch2_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch6_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch7_S5':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+##################
+'h_nJets_Ch2_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch6_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nJets_Ch7_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  for-yields: true
+
+'h_nbJets_Ch2_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch6_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_nbJets_Ch7_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch2_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ncJets_Ch6_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+  
+'h_ncJets_Ch7_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch2_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch6_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
+  save-extensions: ['pdf']
+
+'h_ntauJets_Ch7_S6':
+  y-axis: "Events"
+  y-axis-format: "%1% / %2$.2f"
+  log-y: true
+  sort-by-yields: true
   save-extensions: ['pdf']
 
